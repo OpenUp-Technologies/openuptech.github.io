@@ -1,11 +1,21 @@
 ## Developing the world of learning
 
 The OpenUp Platform allows the user to create AR and VR apps in a shared environment.
+The core library is designed to be extendable to allow developer to create their own
+interactive components and menus. 
+
+This documentation is a reference guide to how the various components can be used
+and extended upon, and how the app are run.
 
 ### Getting Started
 
 To get started, download the package for your chosen platform. Then create
 a new Unity project using Unity 2019.4 or later and import the package.
+
+### [Core Library](Articles/client/index.md)
+
+The core library handles the platform agnostic aspects of the platform.
+
 
 ### [Custom Environments](Articles/client/Environments/Environments.md)
 
