@@ -1,15 +1,15 @@
-## Welcome to GitHub Pages
+## Developing the world of learning
 
-You can use the [editor on GitHub](https://github.com/OpenUpTech/openuptech.github.io/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+The OpenUp Platform allows the user to create AR and VR apps in a shared environment.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Getting Started
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+To get started, download the package for your chosen platform. Then create
+a new Unity project using Unity 2019.4 or later and import the package.
 
-### Jekyll Themes
+### [Custom Environments](Articles/client/Environments/Environments.md)
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/OpenUpTech/openuptech.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+While the app comes with a set of default environments to choose from, users can
+create their own environments to fit their desired world.
 
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+### Custom World
