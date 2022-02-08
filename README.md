@@ -7,6 +7,10 @@ interactive components and menus.
 This documentation is a reference guide to how the various components can be used
 and extended upon, and how the app are run.
 
+## Work in progress
+
+This site is still very much work in progress.
+
 ### Getting Started
 
 To get started, download the package for your chosen platform. Then create
