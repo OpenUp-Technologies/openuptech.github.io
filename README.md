@@ -5,7 +5,7 @@ The core library is designed to be extendable to allow developer to create their
 interactive components and menus. 
 
 This documentation is a reference guide to how the various components can be used
-and extended upon, and how the app are run.
+and extended upon, and how the apps are run.
 
 ## Work in progress
 
