@@ -30,6 +30,8 @@ The client core library allows the running and editing of solutions built using 
 
 ### Objects
 
+[Objects](Objects/Overview.md)
+
 ### Behaviours
 
 ### Events
