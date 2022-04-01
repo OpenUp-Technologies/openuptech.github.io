@@ -4,7 +4,9 @@ Templates voor 'Saved replies' in GitHub
 
 De bedoeling is om zo relevant mogelijke issues te maken, dus verwijder overbodige elementen zoals bijvoorbeeld 'Voorbeeld', 'Screenshot' of 'Video', als deze voor een specifiek issue irrelevant of niet beschikbaar zijn.
 
-_User storie_
+_User stories_
+
+```md
 
 **User story**
 
@@ -46,3 +48,5 @@ Link
 
 **Elastic Error Messages**
 Link
+
+```
