@@ -6,7 +6,7 @@ De bedoeling is om zo relevant mogelijke issues te maken, dus verwijder overbodi
 
 De posities van de desbetreffende links zijn zodanig voor optimale weergave in GitHub.
 
-_User stories_
+_User story Opening (implementation process)_
 
 ```md
 **User story**
@@ -26,7 +26,30 @@ Inspirerende voorbeelden van potentiële oplossingen...
 ...
 ```
 
-_Bug reports_
+_Implementation process Closure_
+
+```md
+
+**Add/relevant to release notes**
+Waarvan is het goed om een gebruiker/externe ontwikkelaar van op de hoogte te stellen?
+
+WIP Hieronder
+
+_Categorieën_
+General
+New/Added Features
+Improvements
+Fixed (known issues?)
+New/Changed/Removed API
+Developer
+Unresolved
+Special Notes
+Community Contributions
+
+Unresolved/known issue vorige release: new fixed?
+```
+
+_Bug report Opening_
 
 ```md
 Versie: 0.13.4 (beta)
@@ -52,4 +75,26 @@ Link
 
 **Elastic Error Messages**
 Link
+```
+
+_Bug report Closure_
+
+```md
+**Add/relevant to release notes**
+Waarvan is het goed om een gebruiker/externe ontwikkelaar van op de hoogte te stellen?
+
+WIP Hieronder
+
+_Categorieën_
+General
+New/Added Features
+Improvements
+Fixed (known issues?)
+New/Changed/Removed API
+Developer
+Unresolved
+Special Notes
+Community Contributions
+
+Unresolved/known issue vorige release: new fixed?
 ```
