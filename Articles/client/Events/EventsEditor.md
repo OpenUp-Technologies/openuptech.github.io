@@ -31,7 +31,7 @@ them (The users use the name, the program uses the id).
 The events can be updated by using `UpdateData`s and sending them via `Updater.SendUpdate`.
 The class `EventUpdateHelper` has some extension methods to make updating events easier.
 
-### [Expressions](ExpressionData.md)
+### [Expressions](ExpressionData/ExpressionData.md)
 
 The `Condition` and `Response` of an event are both expressions. These datastructures represent
 small chunks of logic that can be compiled and executed in the object's context.

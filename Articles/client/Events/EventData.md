@@ -13,18 +13,18 @@ is executed.
 | `Index` | An integer to determine the order of the events |
 | `Name` | A human-readable name for the event |
 | `GroupName` | Allows grouping of events during editing, no effect during play |
-| `Condition` | An [Expression](ExpressionData.md) that returns either true or false, to determine whether the event has been triggered |
-| `Reponse` | An [Expression](ExpressionData.md) which describes what must be done if the event is triggered |
+| `Condition` | An [Expression](ExpressionData/ExpressionData.md) that returns either true or false, to determine whether the event has been triggered |
+| `Reponse` | An [Expression](ExpressionData/ExpressionData.md) which describes what must be done if the event is triggered |
 | `ActiveAtStart` | Whether the event should be listening when the object is loaded in |
 
 ### Events during Play
 
-When the world is played all events are compiled, this turns their `Condition`
+All events are compiled once the world is played, this turns their `Condition`
 and `Response` into executable functions. Each frame all objects run each active
 event, checking the `Condition` and if that returns true, firing the `Response`.
 
 Because all events are compiled during the start, the events cannot be updated during
-play, and multiple instances of the same base obejct cannot have different events.
+play.
 
 #### Inactive Events
 
@@ -33,18 +33,62 @@ is not checked and thus its `Response` is never fired.
 By default, events are active when an object is loaded in. To override this you
 can set the `ActiveAtStart` field to `false`.
 
-To disable an event while playing, you can use the Expressions. A method expression
-to call `gameObject.SetEventActive("EventName", false)` is how that would work. The prebuilt
-response `"Set Event Active"` does this.
+To disable an event while playing, you can use the Expressions. There's a prebuilt responce called
+`"Set Event Active"` which is compiled into the method that sets an event active or inactive. You just need
+to fill in the event name and whether or not you want it to be active.
+
+You can also make this expression programatically. To get started, you can read up about it at [ExpressionData](ExpressionData/ExpressionData.md).
 
 #### Execution Order
 
 The order in which multiple events on the same object are fired is influenced
 by their `Index`. If the `Index` is not set then the event's index is `0` and
-it would be executed first. The order of multiple events with the same index is
-undefined.
-The firing of events is single-threaded and there is no way to fire some events
-of object A, then object B's events and then other events of object A.
+it would be executed first. Though events can have the same index, the order of multiple events with the same 
+index is undefined. So if order is important, make sure events don't share the same index.
+
+The firing of events is single-threaded. For example, assuming object A was added first, if events in object B 
+cause events in object A to have their conditions fulfilled, those events in object A will have to wait for the
+next go-round.
+
+So you will have to work around situations where a condition relies on a state of an earlier object that can only 
+be set on the next loop. For example:
+
+```csharp
+ObjectA
+{
+    Event1
+    {
+        Condition: //If ObjectA is moving..
+        Responce: //Set variable 'isMoving' to true.
+    }
+    Event2
+    {
+        Condition: //If ObjectA reached a certain point..
+        Responce: //Set variable 'isMoving' to false.
+    }  
+}
+ObjectB
+{
+    Event1
+    {
+        Condition: //On start..
+        Responce: //Move ObjectA.
+    }
+    Event2
+    {
+        Condition: //If ObjectA.isMoving is false..
+        Responce: //Destroy ObjectA.
+    }
+}
+```
+In this example, ObjectA is not moving when it starts, so it's "isMoving" variable is false. Events 1 and 2 do
+nothing. The first event in ObjectB starts moving ObjectA immediately. Its second event then checks if the variable 
+"isMoving" on ObjectA is true. But **only on the next loop** will ObjectA respond and set its "isMoving" variable
+to true. So ObjectA will be destroyed before it even got to its destination.
+
+All of these events could have been placed in ObjectA in the same order, and the same would happen. But in this
+example we choose to show an ObjectB influencing another object for you to **keep in mind that things can get very
+complicated, and the results confusing, if you don't keep track of what's happening.**
 
 ### Events during Editing
 

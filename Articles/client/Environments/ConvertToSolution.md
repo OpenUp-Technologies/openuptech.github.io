@@ -15,30 +15,30 @@ component. The basic object properties are defined with the following fields
 | Field | Definition |
 | --- | --- |
 | `source` | This is the path to the prefab for this object, the `Get Prefab Path` button should configure this automatically. |
-| `lockState` | The lock state of the object, to for instance make an object unscalable or immovable. |
-| `noPhysics` | Turns of physics for the object. |
-| `weight` | The weight of the object, assuming it has physics |
+| `lockState` | The lock state of the object, to make an object unscalable or immobile, for instance. |
+| `noPhysics` | Turns off physics for the object if true. |
+| `weight` | The weight of the object. Does nothing if `noPhysics` is enabled. |
 
 There are also 2 fields to define the hierarchy.
 
 | Field | Definition |
 | --- | --- |
-| `childOfRoot` | If true, then this object will be spawned in as a child of the root hierarchy |
-| `children` | The list of objects that are children of this object. |
+| `childOfRoot` | If true, then this object will be spawned as a child of the root hierarchy. a.k.a. Parentless/As a root parent. |
+| `children` | The list of object id's that are children of this object. |
 
 Currently, these fields must be set manually. If an object is neither `childOfRoot` nor
-contained in some `children` collection, then it will not be spawned in and not part of
+contained in some `children` collection, then it will not be loaded in and not part of
 the world. If and object *is* `childOfRoot` *and* in some `children` collection, it will
-be spawned in multiple times.
+be spawned in multiple times as the ID is that of the object data in the solution. Not that of an individual instance of the object.
 
 ### Adding Behaviours
 
-To add a Behaviour to a startup object, use the `IConvetToBehaviour` interface.
+To add a [Behaviour](../Behaviours/BehaviourBase.md) to a startup object, use the `IConvertToBehaviour` interface.
 This interface has two members
 
 | Field | Definition |
 | --- | --- |
-| `BehaviourId` | This property should return the id of the behaviour you are adding. |
+| `BehaviourId` | This property should return the id of the behaviour you are adding. Make sure each ID is unique. |
 | `ConvertToBehaviour` | This should return the Behaviour data. |
 
 `ConvertToSolution` will search the object it is on for any components with this interface,
@@ -48,25 +48,22 @@ and call `ConvertToBehaviour` to add that behaviour to the object.
 
 There are a few pitfalls to remember when using the ConvertToSolution component. 
 
-- The object reference as `source` wil be loaded in as child of the world object.
+- The object referenced in `source` wil be loaded in as the child of an object (Henseforth "world object") containing all the behaviour components.
 
-This is due to how the objects are loaded, the object is generated and that generated object
-loads in the prefab. This means that you should be careful adding things like a `Rigidbody` to the prefab as this will
-result in the object moving without the world object realizing, breaking synchronization.
+This means that you should be careful adding things like a `Rigidbody` to the prefab as this will
+result in the object moving without the application realizing, breaking synchronization. To put it another way, 
+it will fall out of the invisible box that is the world object containing the behaviour scripts.
+If the object is supposed to have a `Rigidbody` , you just leave `noPhysics` turned off. Our program will ensure a `Rigidbody` is added 
+to the world object as well as any behaviour components it's supposed to have once it gets loaded in.
 
-This also has consequences for any component or custom behaviour you added. Any behaviour
-you defined will be added to the world object, not the prefab. In general the design
-pattern you want to maintain is to create a Behaviour that connects the object to the
-world data, and anything `MonoBehvaior` containing the custom object logic.
+- Objects must be *either* `childOfRoot` *or* contained in the `children` array of another object, or they will never show up.
 
-- Objects must be *either* `childOfRoot` *or* contained in one other `children` array.
-
-This makes sure there is exactly one place in the hierarchy where this object must be spawned.
-If this is not the case you end up with multiple instances if both are true, or no
-instances if neither are true.
+If the id shows up in multiple `children` arrays, or if the object is also a `childOfRoot`, there will be duplicates of the object and may result
+in odd and unexpected behaviour if the object is affected by any outside variables, as both will share their identifier. You should therefore instead 
+duplicate the object in the environment / solution if clones are intended.
 
 - The prefab's position must be centered, as the prefab's transform in the scene and the original
 transform are *both* applied.
 
-This is linked to the first pitfall. The transform in the scene is applied to the world object but the 
-prefab's transform is not cleared after being loaded in, so the result is both being applied to the object.
+This is linked to the first pitfall. Since the prefab is loaded in, as-is, and a child of a new world object. Meaning any offsets 
+in the root transform of the prefab are retained.
