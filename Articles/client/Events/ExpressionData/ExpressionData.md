@@ -3,9 +3,6 @@
 Expressions are how the world allows users to define interactivity. They allow the user to
 define small chunks of logic that can then be executed.
 
-Expressions get executed in a `Scope` which defines which variables the expression can
-access and modify.
-
 ### `ExpressionData` vs. `Expression`
 
 Expressions are defined using `ExpressionData` which is defined using protobuf and
@@ -14,12 +11,12 @@ The `Expression` class defines the expression in C# and provides the functionali
 The `ToEpxressionTool` allows the conversion from `ExpressionData` to `Expression`.
 
 Finally, you can make the expression an executable function with the help of `Expression.Compile`.
-This happens automatically when the world played.
+This happens automatically when the world is played.
 
-### `Scope`
+### Scope
 
-The scope defines the variables that an expression can access. Each object has its own scope,
-and there is also a global scope.
+Expressions get executed in a `Scope`. The scope defines the variables that an expression can access.
+Each object has its own scope, and there is also a global scope.
 
 The scope contains:
 - A set of default objects, like `gameObject` which allows the user to access things like the object's name
@@ -54,10 +51,10 @@ it can be serialized by protobuf.
 It is a ValueData which can hold most Unity types as well as simple things like numbers and strings.
 
 #### MethodExpressionData
-`MethodExpressionData` represents calling a method of an object, e.g. `Motion.Turn(90, 1)`. The `MethodName` is the name
-of the method you want to call, and the `Source` should be the object that has that method.
-A common values for source the variables `gameObject` and `Motion` which are objects that contain
-useful methods.
+`MethodExpressionData` represents calling a method of an object, e.g. `Motion.Turn(90, 1)`. The 
+`MethodName` is the name of the method you want to call, and the `Source` should be the object that
+has that method. Common values for `source` are variables like `gameObject` or `Motion` that 
+contain a lot of useful methods.
 
 The `ReturnType` is an (currently missing) enum representing the type of return value.
 

@@ -15,11 +15,12 @@ To that end, let's define some terms.
 | Model | This refers to a 3D visual, consisting of triangles and vertices. |
 | Base Data | This is the data that defines in-game objects, represented using a `ObjectStructure`. |
 | Instance Data | This is the  data for a single in-game object, represented using a `ObjectInstance`. |
-| Client Instance | This data structure holds all the client logic for a `ObjectInstance`. Represented using a `ComponentInstance` |
+| Client Instance | This data structure holds all the client logic for an `ObjectInstance`. Represented using a `ComponentInstance` |
+| Object | This is a catch-all term we use that is a combination of "in-game object", "instance data" and depending on the context "base data".|
 
-The base data and instance data are shared across all users. In each client the client instances
-are driven from this shared data and and those client instances then create and manage
-the in-game objects and models.
+The base data and instance data are shared across all users. In each client the client 
+instances are driven from this shared data and and those client instances then create and 
+manage the in-game objects and models.
 
 ### Object Data
 
@@ -35,6 +36,6 @@ base data is what is stored in the world data.
 
 Objects are organized into a hierarchy when the world is played. In the world data
 all object are at the same depth though. Each object data has a list of IDs of
-the objects that it should load in as children. In-game these objects will then be
+the objects that it should load in as children. In-game, these objects will then be
 children.
 

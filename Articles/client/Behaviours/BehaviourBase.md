@@ -2,7 +2,8 @@
 
 > This page is partially obsolete and will be updated in the near future
 
-Objects can have specialized scripting attached to them using behaviours. 
+Similar to the [Visualization](../Visualizations/Visualization.md), which define the kind 
+of object this is, objects can have specialized scripting attached to them using behaviours.
 These behaviours have a list of properties and are kept in sync across multiple
 users by keeping the properties in sync.
 

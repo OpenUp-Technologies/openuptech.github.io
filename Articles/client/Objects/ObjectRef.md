@@ -11,5 +11,7 @@ Here are the most relevant aspects for programmers:
 
 |Method|Description|
 ||
-|IsParentOf|Returns true if this object is the parent of the object with the given `ObjectRef` with an additional parameter for if you just care about the immediate child, or a child farther down the hierarchy.|
-|IsChildOf|Returns true if this object is the child, or "grand-"child of the object with the given `ObjectRef`.|
+|IsParentOf|Returns true if this object is the parent of the object with the given `ObjectRef` with an additional parameter for if you just care about the immediate child, or a child farther down the hierarchy.
+|IsChildOf|Returns true if this object is the child, or "grand-"child of the object with the given `ObjectRef`.
+|ComponentId|Returns the unique component id of an object. Or the unique instance id of a non-data object. Which could be a purely visual object for the sake of previewing.
+|ObjectPath|Returns the path to the base data in the solution of the object with this id.
