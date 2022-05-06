@@ -4,7 +4,7 @@ In-game objects in a world support parent-child behaviour. The in-game objects l
 defined using a set of `Child`ren. These children do not contain the full data of
 the object to be loaded in, just the object's ID.
 
-### `Child`
+### Child
 
 Each `Child` object has the following fields.
 

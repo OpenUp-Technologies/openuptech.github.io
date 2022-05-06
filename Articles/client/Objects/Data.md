@@ -44,31 +44,10 @@ The properties of both Behaviours and Visuals are stored in a `PropertyList`.
 This stores a set of values in key-value mapping with each property having an
 integer ID associated with it.
 
-Which properties can be in the list is set via a `Shape`. This shape holds the
+Which properties can be in the list is set via a [Shape](../DLL/Shape.md). This shape holds the
 ID, name, and default value for each field in the list. It also holds a integer id
 for the entire shape and a human-readable name for the list, as well as reference
 to the MonoBehaviour that is added to display the visual/run the behaviour.
-
-For example, the shape for the Text visual is: 
-
-```c#
-new Shape
-{
-    Name = nameof(Text),
-    MonoBehaviourClass = typeof(Text),
-    [1] = new PropertySpec
-          {
-              Name = nameof(text),
-              DefaultValue = "Text"
-          },
-    [2] = new PropertySpec
-          {
-              Name = nameof(color),
-              DefaultValue = Color.black
-          },
-     // cut for brevity
-}
-```
 
 This allows you to access the properties of the Text either by name, or
 by id.
