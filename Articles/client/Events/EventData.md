@@ -5,8 +5,6 @@ as a condition-response pair. Each object has a set of these pairs and each
 frame all conditions are checked and for each true condition, the response
 is executed.
 
-### Fields
-
 | FieldName | Description |
 | --- | --- |
 | `Id` | A unique identifier for this event |

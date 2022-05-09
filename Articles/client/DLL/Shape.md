@@ -45,3 +45,5 @@ Shape moveShape = new Shape
     }
 }
 ```
+
+### PropertySpec

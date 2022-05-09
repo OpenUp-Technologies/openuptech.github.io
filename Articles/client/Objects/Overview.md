@@ -32,7 +32,7 @@ base data is what is stored in the world data.
 
 ### Object Hierarchy
 
-[Main Article](Hierarchy.md)
+[Main Article](../DLL/Hierarchy.md)
 
 Objects are organized into a hierarchy when the world is played. In the world data
 all object are at the same depth though. Each object data has a list of IDs of

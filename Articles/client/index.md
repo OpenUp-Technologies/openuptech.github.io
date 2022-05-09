@@ -65,7 +65,7 @@ object, the code first claims ownership provided the ownership of an object is n
 If ownership is locked for example, because someone else is editing its properties, or has grabbed it, nobody else
 can claim ownership of the object, or grab it, and edit its properties.
 
-### Objects
+### [Objects](Objects/Data.md)
 
 There's a lot of use of the word "object" with different meanings depending on the context. For more info about
 the terminology, check out this [overview](Objects/Overview.md).
@@ -75,7 +75,7 @@ the terminology, check out this [overview](Objects/Overview.md).
 The objects in the app, defined in the data are used for creating ComponentInstances which are the unity
 equivalent of the data of these objects.
 
-#### [Hierarchy](Objects/Hierarchy.md)
+#### [Hierarchy](DLL/Hierarchy.md)
 
 Sometimes there are objects that are part of a larger object. We call these children and parent when talking about
 their "relationship". For example, if we have a car-frame object, separate wheel objects would be children of that

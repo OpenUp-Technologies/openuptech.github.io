@@ -23,7 +23,7 @@ When the editor allows you to change an object that has been loaded in, you must
 consider whether you want to change the base object, or the `Overrides`.
 
 Each loaded in object has a `sourceChild` field that references the `Child` that loaded
-it in. This is part of the [ComponentInstance](ComponentInstance.md).
+it in. This is part of the [ComponentInstance](../Objects/ComponentInstance.md).
 
 This direct relation between `Child` and instance is only present during edit mode.
 When the world is played children are loaded in on a fire-and-forget basis. An object

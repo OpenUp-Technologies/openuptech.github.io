@@ -4,22 +4,22 @@ Every GameObject in a world is defined as an object. Both 2D and 3D models are o
 so are groups. The object data contains not just its visual representation
 but also its interactive behaviour.
 
-### `ObjectStructure`
+### ObjectStructure
 
 An object has its data stored in an `ObjectStructure` and has the following fields.
 
 | FieldName | Description |
 | --- | --- |
-| `Id` | A unique identifier for this object |
-| `Name` | The name of the object. |
-| `LockState` | BitMask that locks the ways the user can manipulate the object. It holds separate values for Edit and Play modes. |
-| `Transform` | The transformation for object, i.e. its position, rotation, and scale. This is relative to the parent. |
-| `TransformCorrection` | Fixes any importing errors in the object's transform, should usually be identity |
-| `Visual` | The visual representation of the object, usually a model or text. Can be nothing (for example with groups). |
-| `Children` | The children of the object are stored in here. |
-| `Behaviours` | Any specialized scripting components are listed here. |
-| `Events` | [Events](../Events/EventData.md) are stored in this field. |
-| `LoalVariables` | Custom variables for events are stored here. |
+| Id | A unique identifier for this object |
+| Name | The name of the object. |
+| LockState | BitMask that locks the ways the user can manipulate the object. It holds separate values for Edit and Play modes. |
+| Transform | The transformation for object, i.e. its position, rotation, and scale. This is relative to the parent. |
+| TransformCorrection | Fixes any importing errors in the object's transform, should usually be identity |
+| Visual | A list of properties that define the visual representation of the object, usually a model or text. Can be nothing (for example with groups). |
+| Children | The children of the object are stored in here. |
+| Behaviours | A list of behaviours with their properties. |
+| Events | [Events](../Events/EventData.md) are stored in this field. |
+| LoalVariables | Custom variables for events are stored here. |
 
 ### Visuals
 
@@ -60,7 +60,7 @@ string text = properties.GetProperty(1);
 text = properties.GetProperty("text");
 ```
 
-### [Hierarchy](Hierarchy.md)
+### [Hierarchy](../DLL/Hierarchy.md)
 
 The internal structure of the hierarchy is flat, all objects are stored in one 
 list at the same depth. The children of an object are not represented as all the

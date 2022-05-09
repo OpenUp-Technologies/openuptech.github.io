@@ -13,6 +13,14 @@ The `ToEpxressionTool` allows the conversion from `ExpressionData` to `Expressio
 Finally, you can make the expression an executable function with the help of `Expression.Compile`.
 This happens automatically when the world is played.
 
+ExpressionData only has a couple of fields:
+
+|Field|Description|
+||
+|Value| The type of expression this is. (Like AssignExpressionData, PropertyExpressionData etc.)
+|Template| The name of the template this expression could be based on.|
+|CustomName| A user given name to the expression.|
+
 ### Scope
 
 Expressions get executed in a `Scope`. The scope defines the variables that an expression can access.

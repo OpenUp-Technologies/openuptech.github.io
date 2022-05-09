@@ -75,23 +75,42 @@ directly would result in `null`.
 Composit updates only need to be assigned the type `UpdateType.Composit` and given a list of `UpdateData`.
 These updates will be applied in order.
 
-### UpdatePath
+### UpdateIntPath
 
-Back when our code was still very inefficient, the data on the server was literally json data. So paths to specific
-fields would literally be a list of strings. But this took up so much space, updates slowed the program down.
-We have since started using binary forms of data and while an `UpdatePath` can still consist of a list of strings
-it's adviced to use a list of numbers instead.
+An update path is in a way, a list of numbers that point to a specific point in the world data. These paths are
+needed for making updates in specific locations in the world data.
 
-Luckily most objects already hold a reverence to the path they're on already. Including a constant number for their
-field. [ObjectRef](../Objects/ObjectRef.md) itself also has a method called `ObjectPath` containing the path to the 
-data of the object with that id.
-An `UpdatePath` can also easily be "extended" by simply using the `&` operator. So here's an example of creating a
-path to an event on an object, assuming we know the `ObjectRef` called "objRef" of an object:
+#### Creating an update path
+
+When creating an Update for something in any of these fields, you need the number of the field to create an
+[UpdateIntPath](UpdateData.md#UpdatePath) to that field.
+
+Constant int values are generated for each field in any data structure you'll find. So getting the number is as
+simple as [DataStructure name]`.`+[Field name]+`FieldNumber`. Here's an example of creating an 
+[UpdateIntPath](UpdateData.md#UpdatePath) to the `Objects` field in the world data:
+
 ```csharp
-UpdatePath = objRef.ObjectPath() & ObjectStructure.EventsFieldNumber & eventID;
+UpdateIntPath pathToObjects = new UpdateIntPath(AppRuntimeData.ObjectsFieldNumber);
+```
+ The constructor for `UpdateIntPath` allows for any number of numbers as its parameters to further specify the
+object you want to edit, or a property of that object, etc.
+
+[ObjectRef](../Objects/ObjectRef.md) itself has a method called `ObjectPath` containing the path to the 
+data of the object with that id. So getting the path to a specific object is easy as long as you know its 
+[ObjectRef](../Objects/ObjectRef.md) id. Here's an example of making the path to the object yourself.
+
+```csharp
+ObjectStructure myObject;
+AppCore.solutionData.Objects.TryGetValue(componentId, out myObject);
+
+UpdateIntPath pathToMyObject = new UpdateIntPath(AppRuntimeData.ObjectsFieldNumber, myObject.Id);
 ```
 
-It does require some prior knowledge about the [DataStructure](DataStructure.md) to know that there's an "EventsFieldNumber" that has
-to be added before the id of an event.
+An `UpdatePath` can easily be "extended" by simply using the `&` operator. So here's an example of creating a
+path to an event on an object, this time using the `ObjectPath` method of [ObjectRef](../Objects/ObjectRef.md):
+```csharp
+UpdateIntPath pathToEvent = objRef.ObjectPath() & ObjectStructure.EventsFieldNumber & eventID;
+```
 
-
+Making paths on your own does require an understanding of how the data structure looks. Go to [DataStructure](DataStructure.md)
+for more.
