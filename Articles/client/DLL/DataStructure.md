@@ -20,4 +20,4 @@ Starting from the top, the world data has a couple of fields in it:
 |Buffers|Used for holding chunks of data to easily edit the world without having to override big parts of the world over and over.|
 
 Here's a complete overview of the AppRuntimeData structure.
-![](/assets/images/DataStructureVisualized.jpg)
+![](https://github.com/OpenUpTech/openuptech.github.io/tree/main/assets/images/DataStructureVisualized.jpg)
